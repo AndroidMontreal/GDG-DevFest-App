@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Devfest {
+class Config {
   static const String app_name = "Women Techmakers Montreal";
   static const String app_version = "Version 1.0.4";
   static const int app_version_code = 1;

@@ -8,7 +8,7 @@ import 'package:flutter_devfest/home/session.dart';
 import 'package:flutter_devfest/home/speaker.dart';
 import 'package:flutter_devfest/home/team.dart';
 import 'package:flutter_devfest/utils/dependency_injection.dart';
-import 'package:flutter_devfest/utils/devfest.dart';
+import 'package:flutter_devfest/utils/Config.dart';
 
 import 'index.dart';
 
@@ -24,7 +24,7 @@ class MockClient implements IClient {
       if (Injector().currentDataMode == DataMode.DART) {
         rawString = jsonEncode(SpeakersData(speakers: speakers));
       } else {
-        rawString = await rootBundle.loadString(Devfest.speakersAssetJson);
+        rawString = await rootBundle.loadString(Config.speakersAssetJson);
       }
       resultClass = await compute(jsonParserIsolate, rawString);
     }
@@ -34,7 +34,7 @@ class MockClient implements IClient {
       if (Injector().currentDataMode == DataMode.DART) {
         rawString = jsonEncode(SessionsData(sessions: sessions));
       } else {
-        rawString = await rootBundle.loadString(Devfest.sessionsAssetJson);
+        rawString = await rootBundle.loadString(Config.sessionsAssetJson);
       }
       resultClass = await compute(jsonParserIsolate, rawString);
     }
@@ -44,7 +44,7 @@ class MockClient implements IClient {
       if (Injector().currentDataMode == DataMode.DART) {
         rawString = jsonEncode(TeamsData(teams: teams));
       } else {
-        rawString = await rootBundle.loadString(Devfest.teamsAssetJson);
+        rawString = await rootBundle.loadString(Config.teamsAssetJson);
       }
       resultClass = await compute(jsonParserIsolate, rawString);
     }

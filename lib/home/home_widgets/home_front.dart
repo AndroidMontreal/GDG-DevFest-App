@@ -8,7 +8,7 @@ import 'package:flutter_devfest/speakers/speaker_page.dart';
 import 'package:flutter_devfest/sponsors/sponsor_page.dart';
 import 'package:flutter_devfest/team/team_page.dart';
 import 'package:flutter_devfest/universal/image_card.dart';
-import 'package:flutter_devfest/utils/devfest.dart';
+import 'package:flutter_devfest/utils/Config.dart';
 import 'package:flutter_devfest/utils/tools.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -142,38 +142,38 @@ class HomeFront extends StatelessWidget {
             IconButton(
               icon: Icon(FontAwesomeIcons.facebookF),
               onPressed: () async {
-                await _launchURL(Devfest.facebookUrl);
+                await _launchURL(Config.facebookUrl);
               },
             ),
             IconButton(
               icon: Icon(FontAwesomeIcons.twitter),
               onPressed: () async {
-                await _launchURL(Devfest.twitterUrl);
+                await _launchURL(Config.twitterUrl);
               },
             ),
             IconButton(
               icon: Icon(FontAwesomeIcons.linkedinIn),
               onPressed: () async {
-                _launchURL(Devfest.linkedinUrl);
+                _launchURL(Config.linkedinUrl);
               },
             ),
             IconButton(
               icon: Icon(FontAwesomeIcons.youtube),
               onPressed: () async {
-                await _launchURL(Devfest.youtubeUrl);
+                await _launchURL(Config.youtubeUrl);
               },
             ),
             IconButton(
               icon: Icon(FontAwesomeIcons.meetup),
               onPressed: () async {
-                await _launchURL(Devfest.meetupUrl);
+                await _launchURL(Config.meetupUrl);
               },
             ),
             IconButton(
               icon: Icon(FontAwesomeIcons.envelope),
               onPressed: () async {
                 var emailUrl =
-                    "mailto:"+ Devfest.email+ "?subject=" + AppLocalizations.of(context).translate("emailSubject");
+                    "mailto:"+ Config.email+ "?subject=" + AppLocalizations.of(context).translate("emailSubject");
                 var out = Uri.encodeFull(emailUrl);
                 await _launchURL(out);
               },
@@ -192,8 +192,8 @@ class HomeFront extends StatelessWidget {
           children: <Widget>[
             ImageCard(
               img: ConfigBloc().darkModeOn
-                  ? Devfest.banner_dark
-                  : Devfest.banner_light,
+                  ? Config.banner_dark
+                  : Config.banner_light,
             ),
             SizedBox(
               height: 20,
@@ -211,7 +211,7 @@ class HomeFront extends StatelessWidget {
               height: 20,
             ),
             Text(
-              Devfest.app_version,
+              Config.app_version,
               style: Theme.of(context).textTheme.caption.copyWith(fontSize: 10),
             )
           ],

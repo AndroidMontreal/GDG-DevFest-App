@@ -10,7 +10,7 @@ import 'package:flutter_devfest/map/map_page.dart';
 import 'package:flutter_devfest/speakers/speaker_page.dart';
 import 'package:flutter_devfest/sponsors/sponsor_page.dart';
 import 'package:flutter_devfest/team/team_page.dart';
-import 'package:flutter_devfest/utils/devfest.dart';
+import 'package:flutter_devfest/utils/Config.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 
@@ -32,7 +32,7 @@ class _ConfigPageState extends State<ConfigPage> {
   setupApp() {
     configBloc = ConfigBloc();
     configBloc.darkModeOn =
-        Devfest.prefs.getBool(Devfest.darkModePref) ?? false;
+        Config.prefs.getBool(Config.darkModePref) ?? false;
   }
 
   @override
@@ -55,7 +55,7 @@ class _ConfigPageState extends State<ConfigPage> {
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               //* Custom Google Font
-              fontFamily: Devfest.google_sans_family,
+              fontFamily: Config.google_sans_family,
               primarySwatch: Colors.red,
               primaryColor: configBloc.darkModeOn ? Colors.black : Colors.white,
               disabledColor: Colors.grey,

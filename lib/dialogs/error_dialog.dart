@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_devfest/Localization/AppLocalizations.dart';
-import 'package:flutter_devfest/utils/devfest.dart';
+import 'package:flutter_devfest/utils/Config.dart';
 
 class ErrorDialog extends StatelessWidget {
   final Widget child;
