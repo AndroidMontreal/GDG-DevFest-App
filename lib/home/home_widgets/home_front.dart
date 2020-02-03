@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_devfest/Localization/AppLocalizations.dart';
 import 'package:flutter_devfest/agenda/agenda_page.dart';
 import 'package:flutter_devfest/config/index.dart';
 import 'package:flutter_devfest/faq/faq_page.dart';
@@ -15,7 +16,7 @@ import 'package:url_launcher/url_launcher.dart';
 class HomeFront extends StatelessWidget {
   List<Widget> devFestTexts(context) => [
         Text(
-          Devfest.welcomeText,
+          AppLocalizations.of(context).translate("welcome"),
           style: Theme.of(context).textTheme.headline,
           textAlign: TextAlign.center,
         ),
@@ -23,7 +24,7 @@ class HomeFront extends StatelessWidget {
           height: 10,
         ),
         Text(
-          Devfest.descText,
+          AppLocalizations.of(context).translate("homeDescription"),
           style: Theme.of(context).textTheme.caption,
           textAlign: TextAlign.center,
         ),
@@ -96,39 +97,39 @@ class HomeFront extends StatelessWidget {
           ActionCard(
             icon: Icons.schedule,
             color: Colors.red,
-            title: Devfest.agenda_text,
+            title: AppLocalizations.of(context).translate("schedule"),
             onPressed: () => Navigator.pushNamed(context, AgendaPage.routeName),
           ),
           ActionCard(
             icon: Icons.person,
             color: Colors.green,
-            title: Devfest.speakers_text,
+            title: AppLocalizations.of(context).translate("speakers"),
             onPressed: () =>
                 Navigator.pushNamed(context, SpeakerPage.routeName),
           ),
           ActionCard(
             icon: Icons.people,
             color: Colors.amber,
-            title: Devfest.team_text,
+            title: AppLocalizations.of(context).translate("team"),
             onPressed: () => Navigator.pushNamed(context, TeamPage.routeName),
           ),
           ActionCard(
             icon: Icons.attach_money,
             color: Colors.purple,
-            title: Devfest.sponsor_text,
+            title: AppLocalizations.of(context).translate("sponsors"),
             onPressed: () =>
                 Navigator.pushNamed(context, SponsorPage.routeName),
           ),
           ActionCard(
             icon: Icons.question_answer,
             color: Colors.brown,
-            title: Devfest.faq_text,
+            title: AppLocalizations.of(context).translate("faq"),
             onPressed: () => Navigator.pushNamed(context, FaqPage.routeName),
           ),
           ActionCard(
             icon: Icons.map,
             color: Colors.blue,
-            title: Devfest.map_text,
+            title: AppLocalizations.of(context).translate("locateUs"),
             onPressed: () => Navigator.pushNamed(context, MapPage.routeName),
           )
         ],
@@ -141,38 +142,38 @@ class HomeFront extends StatelessWidget {
             IconButton(
               icon: Icon(FontAwesomeIcons.facebookF),
               onPressed: () async {
-                await _launchURL("https://facebook.com/imthepk");
+                await _launchURL(Devfest.facebookUrl);
               },
             ),
             IconButton(
               icon: Icon(FontAwesomeIcons.twitter),
               onPressed: () async {
-                await _launchURL("https://twitter.com/imthepk");
+                await _launchURL(Devfest.twitterUrl);
               },
             ),
             IconButton(
               icon: Icon(FontAwesomeIcons.linkedinIn),
               onPressed: () async {
-                _launchURL("https://linkedin.com/in/imthepk");
+                _launchURL(Devfest.linkedinUrl);
               },
             ),
             IconButton(
               icon: Icon(FontAwesomeIcons.youtube),
               onPressed: () async {
-                await _launchURL("https://youtube.com/mtechviral");
+                await _launchURL(Devfest.youtubeUrl);
               },
             ),
             IconButton(
               icon: Icon(FontAwesomeIcons.meetup),
               onPressed: () async {
-                await _launchURL("https://meetup.com/");
+                await _launchURL(Devfest.meetupUrl);
               },
             ),
             IconButton(
               icon: Icon(FontAwesomeIcons.envelope),
               onPressed: () async {
                 var emailUrl =
-                    '''mailto:mtechviral@gmail.com?subject=Support Needed For DevFest App&body={Name: Pawan Kumar},Email: pawan221b@gmail.com}''';
+                    "mailto:"+ Devfest.email+ "?subject=" + AppLocalizations.of(context).translate("emailSubject");
                 var out = Uri.encodeFull(emailUrl);
                 await _launchURL(out);
               },

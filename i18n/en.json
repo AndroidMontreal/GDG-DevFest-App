@@ -1,0 +1,21 @@
+{
+  "confirm": "Confirm",
+  "emailSubject": "Infomation Women Techmakers Montreal",
+  "error": "Some error has occured",
+  "faq": "FAQ",
+  "homeDescription": "Women Techmakers is a program created by Google to celebrate International Women's Day and to highlight the talent of women in technology. This program has been in over 200 global events and seen across 52 countries.",
+  "homeTitle": "Home",
+  "locateUs": "Locate Us",
+  "loading": "Loading...",
+  "schedule": "Schedule",
+  "signIn": "Sign In",
+  "signInGoogle": "Sign in with Google",
+  "signOut": "Sign Out",
+  "somethingWentWrong" : "Something went wrong",
+  "speakers": "Speakers",
+  "sponsors": "Sponsors",
+  "team": "Team",
+  "title": "Women Techmakers Montreal",
+  "tryAgain": "Try Again",
+  "welcome": "Welcome to Women Techmakers Montreal"
+}

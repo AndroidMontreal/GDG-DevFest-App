@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_devfest/Localization/AppLocalizations.dart';
 import 'package:flutter_devfest/utils/devfest.dart';
 
 class LoadingDialog extends StatelessWidget {
@@ -23,7 +24,7 @@ class LoadingDialog extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              Text(Devfest.loading_text),
+              Text(AppLocalizations.of(context).translate("loading")),
             ],
           ),
         ),

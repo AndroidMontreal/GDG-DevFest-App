@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_devfest/Localization/AppLocalizations.dart';
 import 'package:flutter_devfest/utils/devfest.dart';
 
 class ErrorDialog extends StatelessWidget {
@@ -7,7 +8,7 @@ class ErrorDialog extends StatelessWidget {
   final Function onTap;
 
   ErrorDialog(
-      {Key key, this.child, this.error = Devfest.some_error_text, this.onTap})
+      {Key key, this.child, this.error = "error", this.onTap})
       : super(key: key);
 
   @override
@@ -25,13 +26,13 @@ class ErrorDialog extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text(error),
+                Text(AppLocalizations.of(context).translate(error)),
                 SizedBox(
                   height: 10,
                 ),
                 FlatButton(
                   colorBrightness: Brightness.dark,
-                  child: Text(Devfest.try_again_text),
+                  child: Text(AppLocalizations.of(context).translate("tryAgain")),
                   color: Colors.red,
                   onPressed: () {
                     Navigator.pop(context);

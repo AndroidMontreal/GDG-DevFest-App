@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_devfest/Localization/AppLocalizations.dart';
 import 'package:flutter_devfest/agenda/agenda_page.dart';
 import 'package:flutter_devfest/config/index.dart';
 import 'package:flutter_devfest/faq/faq_page.dart';
@@ -10,6 +11,8 @@ import 'package:flutter_devfest/speakers/speaker_page.dart';
 import 'package:flutter_devfest/sponsors/sponsor_page.dart';
 import 'package:flutter_devfest/team/team_page.dart';
 import 'package:flutter_devfest/utils/devfest.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
 
 class ConfigPage extends StatefulWidget {
   static const String routeName = "/";
@@ -39,7 +42,16 @@ class _ConfigPageState extends State<ConfigPage> {
       child: BlocBuilder<ConfigBloc, ConfigState>(
         builder: (context, state) {
           return MaterialApp(
-            title: 'Google Devfest',
+            supportedLocales: [
+              Locale('en', 'US'),
+              Locale('fr', 'CA'),
+            ],
+            localizationsDelegates: [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+            ],
+            title: "Women Techmakers Montreal",
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               //* Custom Google Font

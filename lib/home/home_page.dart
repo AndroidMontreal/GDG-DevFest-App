@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_devfest/Localization/AppLocalizations.dart';
 import 'package:flutter_devfest/home/index.dart';
 import 'package:flutter_devfest/universal/dev_scaffold.dart';
 
@@ -77,7 +78,7 @@ class HomePage extends StatelessWidget {
       //   ),
       //   body: HomeScreen(homeBloc: _homeBloc),
       // ),
-      title: "Home",
+      title: AppLocalizations.of(context).translate("homeTitle"),
     );
   }
 }
