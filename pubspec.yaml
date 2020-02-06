@@ -1,5 +1,5 @@
 name: flutter_devfest
-description: A new Flutter project.
+description: Conference of Women Techmakers Montreal app
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
+  cloud_firestore: ^0.13.0+1
   flutter:
     sdk: flutter
   bloc: ^0.14.4
