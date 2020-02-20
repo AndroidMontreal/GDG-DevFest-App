@@ -36,6 +36,14 @@ class AppLocalizations {
     return true;
   }
 
+   String getLanguagesCode() {
+    if (locale.languageCode == "en" || locale.languageCode == "fr") {
+      return locale.languageCode;
+    } else {
+      return "en";
+    }
+  }
+
   // This method will be called from every widget which needs a localized text
   String translate(String key) {
     return _localizedStrings[key];

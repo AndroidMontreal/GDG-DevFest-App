@@ -5,6 +5,7 @@ class Tools {
     return Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
   }
 
+  static Color wtmBlueColor = Tools.hexToColor("#4285f4");
   static List<Color> multiColors = [
     Colors.red,
     Colors.amber,

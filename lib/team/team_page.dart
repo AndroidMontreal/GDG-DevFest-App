@@ -8,44 +8,12 @@ import 'package:flutter_devfest/Localization/AppLocalizations.dart';
 import 'package:flutter_devfest/home/index.dart';
 import 'package:flutter_devfest/universal/dev_scaffold.dart';
 import 'package:flutter_devfest/utils/tools.dart';
+import 'package:flutter_devfest/utils/widgets/SocialActionsWidget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class TeamPage extends StatelessWidget {
   static const String routeName = "/team";
-
-  Widget socialActions(context, socials) => FittedBox(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            for (var social in socials)
-              IconButton(
-                icon: Icon(
-                  getSocialIcon(social["icon"]),
-                  size: 15,
-                ),
-                onPressed: () {
-                  launch(social["link"]);
-                },
-              ),
-          ],
-        ),
-      );
-
-  IconData getSocialIcon(String iconName) {
-    switch (iconName) {
-      case "linkedin":
-        return FontAwesomeIcons.linkedinIn;
-      case "twitter":
-        return FontAwesomeIcons.twitter;
-      case "facebook":
-        return FontAwesomeIcons.facebook;
-      case "instagram":
-        return FontAwesomeIcons.instagram;
-      default:
-        return FontAwesomeIcons.link;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +29,7 @@ class TeamPage extends StatelessWidget {
           builder: (context, snapshots) {
             if (!snapshots.hasData) return Padding(
                 padding: const EdgeInsets.all(40.0),
-                child: const Text('loading...'));
+                child:  Text(AppLocalizations.of(context).translate("loading")));
             return ListView.builder(
               shrinkWrap: true,
               itemBuilder: (c, i) {
@@ -75,6 +43,7 @@ class TeamPage extends StatelessWidget {
   }
 
   Widget buildCardItem(BuildContext context, DocumentSnapshot memberDocument) {
+    var language = AppLocalizations.of(context).getLanguagesCode();
     return Card(
       elevation: 0.0,
       child: Padding(
@@ -124,17 +93,17 @@ class TeamPage extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      memberDocument["title"]["en"].toString(),
+                      memberDocument["title"][language].toString(),
                       style: Theme.of(context).textTheme.subtitle,
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     Text(
-                      memberDocument["title"]["en"].toString(),
+                      memberDocument["title"][language].toString(),
                       style: Theme.of(context).textTheme.caption,
                     ),
-                    socialActions(context, memberDocument["socials"]),
+                    SocialActions(memberDocument["socials"]),
                   ],
                 ),
               )

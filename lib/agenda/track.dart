@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_devfest/agenda/session_list.dart';
 import 'package:flutter_devfest/home/index.dart';
 
-class CloudScreen extends StatelessWidget {
+class Track extends StatelessWidget {
   final HomeBloc homeBloc;
+  final timeslots;
+  final trackIndex;
 
-  const CloudScreen({Key key, this.homeBloc}) : super(key: key);
+  const Track({Key key, this.homeBloc, this.timeslots, this.trackIndex}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     var state = homeBloc.currentState as InHomeState;
