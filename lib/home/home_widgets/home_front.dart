@@ -7,7 +7,6 @@ import 'package:flutter_devfest/map/map_page.dart';
 import 'package:flutter_devfest/speakers/speaker_page.dart';
 import 'package:flutter_devfest/sponsors/sponsor_page.dart';
 import 'package:flutter_devfest/team/team_page.dart';
-import 'package:flutter_devfest/universal/image_card.dart';
 import 'package:flutter_devfest/utils/Config.dart';
 import 'package:flutter_devfest/utils/tools.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,18 +14,22 @@ import 'package:url_launcher/url_launcher.dart';
 
 class HomeFront extends StatelessWidget {
   List<Widget> devFestTexts(context) => [
-        Text(
-          AppLocalizations.of(context).translate("welcome"),
-          style: Theme.of(context).textTheme.headline,
-          textAlign: TextAlign.center,
+        Padding(padding: EdgeInsets.all(16),
+          child:  Text(
+            AppLocalizations.of(context).translate("title"),
+            style: Theme.of(context).textTheme.headline,
+            textAlign: TextAlign.center,
+          ),
         ),
         SizedBox(
           height: 10,
         ),
-        Text(
-          AppLocalizations.of(context).translate("homeDescription"),
-          style: Theme.of(context).textTheme.caption,
-          textAlign: TextAlign.center,
+        Padding(padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+          child: Text(
+            AppLocalizations.of(context).translate("homeDescription"),
+            style: Theme.of(context).textTheme.caption,
+            textAlign: TextAlign.center,
+          ),
         ),
       ];
 
@@ -38,55 +41,56 @@ class HomeFront extends StatelessWidget {
     }
   }
 
-  Widget actions(context) => Wrap(
-        alignment: WrapAlignment.center,
-        spacing: 10.0,
-        children: <Widget>[
-          RaisedButton(
-            child: Text("Agenda"),
-            shape: StadiumBorder(),
-            color: Colors.red,
-            colorBrightness: Brightness.dark,
-            onPressed: () => Navigator.pushNamed(context, AgendaPage.routeName),
-          ),
-          RaisedButton(
-            child: Text("Speakers"),
-            shape: StadiumBorder(),
-            color: Colors.green,
-            colorBrightness: Brightness.dark,
-            onPressed: () =>
-                Navigator.pushNamed(context, SpeakerPage.routeName),
-          ),
-          RaisedButton(
-            child: Text("Sponsors"),
-            shape: StadiumBorder(),
-            color: Colors.orange,
-            colorBrightness: Brightness.dark,
-            onPressed: () =>
-                Navigator.pushNamed(context, SponsorPage.routeName),
-          ),
-          RaisedButton(
-            child: Text("Team"),
-            shape: StadiumBorder(),
-            color: Colors.purple,
-            colorBrightness: Brightness.dark,
-            onPressed: () => Navigator.pushNamed(context, TeamPage.routeName),
-          ),
-          RaisedButton(
-            child: Text("FAQ"),
-            shape: StadiumBorder(),
-            color: Colors.brown,
-            colorBrightness: Brightness.dark,
-            onPressed: () => Navigator.pushNamed(context, FaqPage.routeName),
-          ),
-          RaisedButton(
-            child: Text("Locate Us"),
-            shape: StadiumBorder(),
-            color: Colors.blue,
-            colorBrightness: Brightness.dark,
-            onPressed: () => Navigator.pushNamed(context, MapPage.routeName),
-          ),
-        ],
+  Widget actions(context) =>  Wrap(
+          alignment: WrapAlignment.center,
+          spacing: 10.0,
+          children: <Widget>[
+            RaisedButton(
+              child: Text(AppLocalizations.of(context).translate("schedule")),
+              shape: StadiumBorder(),
+              color: Colors.red,
+              colorBrightness: Brightness.dark,
+              onPressed: () =>
+                  Navigator.pushNamed(context, AgendaPage.routeName),
+            ),
+            RaisedButton(
+              child: Text(AppLocalizations.of(context).translate("speakers")),
+              shape: StadiumBorder(),
+              color: Colors.green,
+              colorBrightness: Brightness.dark,
+              onPressed: () =>
+                  Navigator.pushNamed(context, SpeakerPage.routeName),
+            ),
+            RaisedButton(
+              child: Text(AppLocalizations.of(context).translate("sponsors")),
+              shape: StadiumBorder(),
+              color: Colors.orange,
+              colorBrightness: Brightness.dark,
+              onPressed: () =>
+                  Navigator.pushNamed(context, SponsorPage.routeName),
+            ),
+            RaisedButton(
+              child: Text(AppLocalizations.of(context).translate("team")),
+              shape: StadiumBorder(),
+              color: Colors.purple,
+              colorBrightness: Brightness.dark,
+              onPressed: () => Navigator.pushNamed(context, TeamPage.routeName),
+            ),
+            RaisedButton(
+              child: Text(AppLocalizations.of(context).translate("faq")),
+              shape: StadiumBorder(),
+              color: Colors.brown,
+              colorBrightness: Brightness.dark,
+              onPressed: () => Navigator.pushNamed(context, FaqPage.routeName),
+            ),
+            RaisedButton(
+              child: Text(AppLocalizations.of(context).translate("locateUs")),
+              shape: StadiumBorder(),
+              color: Colors.blue,
+              colorBrightness: Brightness.dark,
+              onPressed: () => Navigator.pushNamed(context, MapPage.routeName),
+            ),
+          ],
       );
 
   Widget newActions(context) => Wrap(
@@ -114,7 +118,7 @@ class HomeFront extends StatelessWidget {
             onPressed: () => Navigator.pushNamed(context, TeamPage.routeName),
           ),
           ActionCard(
-            icon: Icons.attach_money,
+            icon: FontAwesomeIcons.solidHandshake,
             color: Colors.purple,
             title: AppLocalizations.of(context).translate("sponsors"),
             onPressed: () =>
@@ -136,86 +140,90 @@ class HomeFront extends StatelessWidget {
       );
 
   Widget socialActions(context) => FittedBox(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            IconButton(
-              icon: Icon(FontAwesomeIcons.facebookF),
-              onPressed: () async {
-                await _launchURL(Config.facebookUrl);
-              },
-            ),
-            IconButton(
-              icon: Icon(FontAwesomeIcons.twitter),
-              onPressed: () async {
-                await _launchURL(Config.twitterUrl);
-              },
-            ),
-            IconButton(
-              icon: Icon(FontAwesomeIcons.linkedinIn),
-              onPressed: () async {
-                _launchURL(Config.linkedinUrl);
-              },
-            ),
-            IconButton(
-              icon: Icon(FontAwesomeIcons.youtube),
-              onPressed: () async {
-                await _launchURL(Config.youtubeUrl);
-              },
-            ),
-            IconButton(
-              icon: Icon(FontAwesomeIcons.meetup),
-              onPressed: () async {
-                await _launchURL(Config.meetupUrl);
-              },
-            ),
-            IconButton(
-              icon: Icon(FontAwesomeIcons.envelope),
-              onPressed: () async {
-                var emailUrl =
-                    "mailto:"+ Config.email+ "?subject=" + AppLocalizations.of(context).translate("emailSubject");
-                var out = Uri.encodeFull(emailUrl);
-                await _launchURL(out);
-              },
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              IconButton(
+                icon: Icon(FontAwesomeIcons.facebookF),
+                onPressed: () async {
+                  await _launchURL(Config.facebookUrl);
+                },
+              ),
+              IconButton(
+                icon: Icon(FontAwesomeIcons.twitter),
+                onPressed: () async {
+                  await _launchURL(Config.twitterUrl);
+                },
+              ),
+              IconButton(
+                icon: Icon(FontAwesomeIcons.linkedinIn),
+                onPressed: () async {
+                  _launchURL(Config.linkedinUrl);
+                },
+              ),
+              IconButton(
+                icon: Icon(FontAwesomeIcons.youtube),
+                onPressed: () async {
+                  await _launchURL(Config.youtubeUrl);
+                },
+              ),
+              IconButton(
+                icon: Icon(FontAwesomeIcons.meetup),
+                onPressed: () async {
+                  await _launchURL(Config.meetupUrl);
+                },
+              ),
+              IconButton(
+                icon: Icon(FontAwesomeIcons.envelope),
+                onPressed: () async {
+                  var emailUrl = "mailto:" +
+                      Config.email +
+                      "?subject=" +
+                      AppLocalizations.of(context).translate("emailSubject");
+                  var out = Uri.encodeFull(emailUrl);
+                  await _launchURL(out);
+                },
+              ),
+            ],
+          ),
         ),
       );
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            ImageCard(
-              img: ConfigBloc().darkModeOn
-                  ? Config.banner_dark
-                  : Config.banner_light,
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            ...devFestTexts(context),
-            SizedBox(
-              height: 20,
-            ),
-            newActions(context),
-            SizedBox(
-              height: 20,
-            ),
-            socialActions(context),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              Config.app_version,
-              style: Theme.of(context).textTheme.caption.copyWith(fontSize: 10),
-            )
-          ],
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Image(
+            image: AssetImage(ConfigBloc().darkModeOn
+                ? Config.banner_dark
+                : Config.banner_light),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          ...devFestTexts(context),
+          SizedBox(
+            height: 20,
+          ),
+          Padding(padding: EdgeInsets.all(16),
+            child: newActions(context),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          socialActions(context),
+          SizedBox(
+            height: 20,
+          ),
+          Text(
+            Config.app_version,
+            style: Theme.of(context).textTheme.caption.copyWith(fontSize: 10),
+          )
+        ],
       ),
     );
   }
@@ -229,6 +237,7 @@ class ActionCard extends StatelessWidget {
 
   const ActionCard({Key key, this.onPressed, this.icon, this.title, this.color})
       : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return InkWell(

@@ -6,10 +6,23 @@ class Tools {
   }
 
   static Color wtmBlueColor = Tools.hexToColor("#4285f4");
+  static Color wtmBlueLight = Tools.hexToColor("#4dcfff");
+  static Color wtmGreen = Tools.hexToColor("#00bea4");
+  static Color wtmGreenLight = Tools.hexToColor("#1ae9b6");
+  static Color french = Colors.blueAccent;
+  static Color english = Tools.hexToColor("#FF0000");
+
+  static Color getColorForLanguage(String language) {
+    if (language.toLowerCase() =="english" || language.toLowerCase() == "anglais") {
+      return english;
+    } else {
+      return french;
+    }
+  }
   static List<Color> multiColors = [
-    Colors.red,
-    Colors.amber,
-    Colors.green,
-    Colors.blue,
+    wtmBlueColor,
+    wtmBlueLight,
+    wtmGreen,
+    wtmGreenLight,
   ];
 }

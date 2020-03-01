@@ -6,8 +6,6 @@ import 'package:flutter_devfest/utils/dependency_injection.dart';
 import 'package:flutter_devfest/utils/Config.dart';
 
 abstract class IHomeProvider {
-  Future<SpeakersData> getSpeakers();
-  Future<SessionsData> getSessions();
   Future<TeamsData> getTeams();
 }
 
@@ -17,37 +15,13 @@ class HomeProvider implements IHomeProvider {
   static final String kConstGetSpeakersUrl =
       "${Config.baseUrl}/speaker-kol.json";
 
-  //! Not Working
-  static final String kConstGetSessionsUrl =
-      "${Config.baseUrl}/session-kol.json";
+
 
   //! Not Working
   static final String kConstGetTeamsUrl = "${Config.baseUrl}/team-kol.json";
 
   HomeProvider() {
     _client = Injector().currentClient;
-  }
-
-  @override
-  Future<SpeakersData> getSpeakers() async {
-    var result = await _client.getAsync(kConstGetSpeakersUrl);
-    if (result.networkServiceResponse.success) {
-      SpeakersData res = SpeakersData.fromJson(result.mappedResult);
-      return res;
-    }
-
-    throw Exception(result.networkServiceResponse.message);
-  }
-
-  @override
-  Future<SessionsData> getSessions() async {
-    var result = await _client.getAsync(kConstGetSessionsUrl);
-    if (result.networkServiceResponse.success) {
-      SessionsData res = SessionsData.fromJson(result.mappedResult);
-      return res;
-    }
-
-    throw Exception(result.networkServiceResponse.message);
   }
 
   @override

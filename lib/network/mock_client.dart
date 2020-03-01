@@ -19,28 +19,9 @@ class MockClient implements IClient {
     var resultClass;
     String rawString;
 
-    //? For Speakers Hardcoded Data
-    if (resourcePath == HomeProvider.kConstGetSpeakersUrl) {
-      if (Injector().currentDataMode == DataMode.DART) {
-        rawString = jsonEncode(SpeakersData(speakers: speakers));
-      } else {
-        rawString = await rootBundle.loadString(Config.speakersAssetJson);
-      }
-      resultClass = await compute(jsonParserIsolate, rawString);
-    }
-
-    //? For Sessions Hardcoded Data
-    else if (resourcePath == HomeProvider.kConstGetSessionsUrl) {
-      if (Injector().currentDataMode == DataMode.DART) {
-        rawString = jsonEncode(SessionsData(sessions: sessions));
-      } else {
-        rawString = await rootBundle.loadString(Config.sessionsAssetJson);
-      }
-      resultClass = await compute(jsonParserIsolate, rawString);
-    }
 
     //? For Teams Hardcoded Data
-    else if (resourcePath == HomeProvider.kConstGetTeamsUrl) {
+     if (resourcePath == HomeProvider.kConstGetTeamsUrl) {
       if (Injector().currentDataMode == DataMode.DART) {
         rawString = jsonEncode(TeamsData(teams: teams));
       } else {

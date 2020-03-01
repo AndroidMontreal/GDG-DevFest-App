@@ -25,23 +25,17 @@ class UnHomeState extends HomeState {
 
 /// Initialized
 class InHomeState extends HomeState {
-  final SpeakersData speakersData;
-  final SessionsData sessionsData;
   final TeamsData teamsData;
 
   InHomeState(
-      {@required this.speakersData,
-      @required this.sessionsData,
-      @required this.teamsData})
-      : super([speakersData, sessionsData, teamsData]);
+      {@required this.teamsData})
+      : super([ teamsData]);
   @override
   String toString() => 'InHomeState';
 
   @override
   HomeState getStateCopy() {
     return InHomeState(
-        speakersData: this.speakersData,
-        sessionsData: this.sessionsData,
         teamsData: this.teamsData);
   }
 }

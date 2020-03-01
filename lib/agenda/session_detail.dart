@@ -2,10 +2,12 @@ import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_devfest/Localization/AppLocalizations.dart';
 import 'package:flutter_devfest/home/session.dart';
 import 'package:flutter_devfest/home/speaker.dart';
 import 'package:flutter_devfest/universal/dev_scaffold.dart';
 import 'package:flutter_devfest/utils/tools.dart';
+import 'package:flutter_devfest/utils/widgets/SocialActionsWidget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -14,50 +16,6 @@ class SessionDetail extends StatelessWidget {
   final Session session;
 
   SessionDetail({Key key, @required this.session}) : super(key: key);
-
-  Widget socialActions(context) => FittedBox(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            IconButton(
-              icon: Icon(
-                FontAwesomeIcons.facebookF,
-                size: 15,
-              ),
-              onPressed: () {
-                launch(speakers[0].fbUrl);
-              },
-            ),
-            IconButton(
-              icon: Icon(
-                FontAwesomeIcons.twitter,
-                size: 15,
-              ),
-              onPressed: () {
-                launch(speakers[0].twitterUrl);
-              },
-            ),
-            IconButton(
-              icon: Icon(
-                FontAwesomeIcons.linkedinIn,
-                size: 15,
-              ),
-              onPressed: () {
-                launch(speakers[0].linkedinUrl);
-              },
-            ),
-            IconButton(
-              icon: Icon(
-                FontAwesomeIcons.github,
-                size: 15,
-              ),
-              onPressed: () {
-                launch(speakers[0].githubUrl);
-              },
-            ),
-          ],
-        ),
-      );
 
   @override
   Widget build(BuildContext context) {
@@ -71,11 +29,11 @@ class SessionDetail extends StatelessWidget {
             children: <Widget>[
               Center(
                 child: Hero(
-                  tag: session.speakerImage,
+                  tag: session.sessionId,
                   child: CircleAvatar(
                     radius: 100.0,
                     backgroundImage: CachedNetworkImageProvider(
-                      session.speakerImage,
+                      session.speakers[0].image,
                     ),
                   ),
                 ),
@@ -84,7 +42,7 @@ class SessionDetail extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                "${session.speakerDesc}",
+                "${session.speakers[0].title}",
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.title.copyWith(
                       fontSize: 14,
@@ -114,12 +72,32 @@ class SessionDetail extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              socialActions(context),
+              Text(
+                AppLocalizations.of(context).translate("bio"),
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.title.copyWith(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                session.speakers[0].bio,
+                textAlign: TextAlign.center,
+                style:
+                Theme.of(context).textTheme.caption.copyWith(fontSize: 13),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              SocialActions(session.speakers[0].socials)
             ],
           ),
         ),
       ),
-      title: session.speakerName,
+      title: session.speakers[0].name,
     );
   }
 }

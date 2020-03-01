@@ -1,5 +1,6 @@
 {
-  "confirm": "Confirer",
+  "bio": "Biographie",
+  "confirm": "Confirmer",
   "emailSubject": "Infomation Women Techmakers Montréal",
   "error": "Une erreur est survenue",
   "faq": "FAQ",
@@ -17,5 +18,5 @@
   "team": "Équipe",
   "title": "Women Techmakers Montréal",
   "tryAgain" : "Réessayer",
-  "welcome": "Bienvenue à Women Techmakers Montréal"
+  "welcome": "Bienvenue à Women Techmakers Montréal",
 }

@@ -17,49 +17,6 @@ import 'package:url_launcher/url_launcher.dart';
 class SpeakerPage extends StatelessWidget {
   static const String routeName = "/speakers";
 
-  Widget socialActions(context, Speaker speaker) => FittedBox(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            IconButton(
-              icon: Icon(
-                FontAwesomeIcons.facebookF,
-                size: 15,
-              ),
-              onPressed: () {
-                launch(speaker.fbUrl);
-              },
-            ),
-            IconButton(
-              icon: Icon(
-                FontAwesomeIcons.twitter,
-                size: 15,
-              ),
-              onPressed: () {
-                launch(speaker.twitterUrl);
-              },
-            ),
-            IconButton(
-              icon: Icon(
-                FontAwesomeIcons.linkedinIn,
-                size: 15,
-              ),
-              onPressed: () {
-                launch(speaker.linkedinUrl);
-              },
-            ),
-            IconButton(
-              icon: Icon(
-                FontAwesomeIcons.github,
-                size: 15,
-              ),
-              onPressed: () {
-                launch(speaker.githubUrl);
-              },
-            ),
-          ],
-        ),
-      );
 
   @override
   Widget build(BuildContext context) {
@@ -86,8 +43,9 @@ class SpeakerPage extends StatelessWidget {
     );
   }
 
-  Widget buildCardItem(BuildContext context, DocumentSnapshot speakers) {
+  Widget buildCardItem(BuildContext context, DocumentSnapshot speakerDocument) {
     var language = AppLocalizations.of(context).getLanguagesCode();
+    Speaker speaker = Speaker.fromDocumentSnapshot(speakerDocument, language);
     return Card(
       elevation: 0.0,
       child: Padding(
@@ -102,7 +60,7 @@ class SpeakerPage extends StatelessWidget {
                 ),
                 child: CachedNetworkImage(
                   fit: BoxFit.cover,
-                  imageUrl: speakers["photoUrl"],
+                  imageUrl: speaker.image,
                 ),
               ),
               SizedBox(
@@ -119,7 +77,7 @@ class SpeakerPage extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         Text(
-                          speakers["name"],
+                          speaker.name,
                           style: Theme.of(context).textTheme.title,
                         ),
                         SizedBox(
@@ -137,17 +95,17 @@ class SpeakerPage extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      speakers[language]["title"],
+                      speaker.title,
                       style: Theme.of(context).textTheme.subtitle,
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     Text(
-                      speakers[language]["shortBio"],
+                      speaker.shortBio,
                       style: Theme.of(context).textTheme.caption,
                     ),
-                    SocialActions( speakers["socials"]),
+                    SocialActions(speaker.socials),
                   ],
                 ),
               )
