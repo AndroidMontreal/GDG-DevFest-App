@@ -81,6 +81,7 @@ class AgendaPage extends StatelessWidget {
       List<DocumentSnapshot> sessions,
       List<DocumentSnapshot> speakers) {
     var timeslots = schedule.data["timeslots"];
+    var tracks = schedule.data["tracks"];
     var rooms = schedule.data["room"];
     var langCode = AppLocalizations.of(context).getLanguagesCode();
 
@@ -104,6 +105,7 @@ class AgendaPage extends StatelessWidget {
           DocumentSnapshot sessionData =
               getSessionForId(sessions, sessionElement.toString());
           List<Speaker> speakersList = new List<Speaker>();
+
           for (var speakerKey in sessionData["speakers"]) {
             DocumentSnapshot speakerData =
                 getSessionForId(speakers, speakerKey);
@@ -120,10 +122,16 @@ class AgendaPage extends StatelessWidget {
             backgroundColor = Tools.wtmGreen;
           }
 
+          String track = rooms[AppLocalizations.of(context).getLanguagesCode()]
+              [sessionData["roomId"]]["title"];
           Session session = Session.fromDocumentSnapshot(sessionData, langCode,
-              startSession, duration, speakersList, "track", backgroundColor);
-
-//          session.track = rooms[AppLocalizations.of(context).getLanguagesCode()][sessionData["roomId"]]["title"];
+              startSession, duration, speakersList, track, backgroundColor);
+          //Add general item in all track ( like break, Lunch etc
+          if (sessionData["speakers"].length == 0 && sessionElement >= 300) {
+            for (int k = 1; k < tracks.length; k++) {
+              addSessionToMapTrack(trackMap, k, session);
+            }
+          }
           j++;
           listSession.add(session);
         }
@@ -132,6 +140,16 @@ class AgendaPage extends StatelessWidget {
       }
     }
     return trackMap;
+  }
+
+  void addSessionToMapTrack(
+      Map<int, List<Session>> trackMap, int index, Session session) {
+    var listPerTrack = trackMap[index];
+    if (listPerTrack == null) {
+      listPerTrack = new List<Session>();
+    }
+    listPerTrack.add(session);
+    trackMap[index] = listPerTrack;
   }
 
   @override

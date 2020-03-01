@@ -22,7 +22,7 @@ class DevScaffold extends StatelessWidget {
         bottom: false,
         child: Scaffold(
           appBar: AppBar(
-            title: Text(title),
+            title: Text(title, style: Theme.of(context).textTheme.subtitle.copyWith(fontSize: 16)),
             centerTitle: true,
             bottom: tabBar != null ? tabBar : null,
             actions: <Widget>[

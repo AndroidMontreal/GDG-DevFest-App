@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_devfest/Localization/AppLocalizations.dart';
 import 'package:flutter_devfest/config/config_bloc.dart';
 import 'package:flutter_devfest/universal/dev_scaffold.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -13,7 +14,7 @@ class MapPage extends StatefulWidget {
 class _MapPageState extends State<MapPage> {
   GoogleMapController _controller;
   bool isMapCreated = false;
-  static final LatLng myLocation = LatLng(37.42796133580664, -122.085749655962);
+  static final LatLng myLocation = LatLng(45.4945497, -73.5644347);
 
   @override
   void initState() {
@@ -83,13 +84,13 @@ class _MapPageState extends State<MapPage> {
                   child: RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
-                        text: "Google Office\n",
+                        text: "École de technologie supérieure\n",
                         style: Theme.of(context).textTheme.title.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
                         children: [
                           TextSpan(
-                              text: "Shoreline Amphitheatre, Mountain View, CA",
+                              text: "1100 Notre-Dame Ouest, Montréal, Québec H3C 1K3",
                               style: Theme.of(context).textTheme.subtitle,
                               children: []),
                         ]),
@@ -98,7 +99,7 @@ class _MapPageState extends State<MapPage> {
           ],
         ),
       ),
-      title: "Locate Us",
+      title:  AppLocalizations.of(context).translate("locateUs"),
     );
   }
 }

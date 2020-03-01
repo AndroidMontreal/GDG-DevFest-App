@@ -1,27 +1,19 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Sponsor {
   String name;
-  String image;
-  String desc;
+  String logoUrl;
   String url;
-  String logo;
 
-  Sponsor({this.name, this.image, this.desc, this.url, this.logo});
+  Sponsor({this.name, this.logoUrl, this.url});
 
-  Sponsor.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
-    image = json['image'];
-    desc = json['desc'];
-    url = json['url'];
-    logo = json['logo'];
+  Sponsor.fromDocumentSnapshot(DocumentSnapshot documentSnapshot, String lang) {
+    name = documentSnapshot["name"];
+    logoUrl = documentSnapshot["logoUrl"];
+    url = documentSnapshot["url"][lang];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['image'] = this.image;
-    data['desc'] = this.desc;
-    data['url'] = this.url;
-    data['logo'] = this.logo;
-    return data;
+  bool isImageSvg() {
+    return logoUrl.contains(".svg");
   }
 }

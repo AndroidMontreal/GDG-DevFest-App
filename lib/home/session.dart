@@ -33,7 +33,7 @@ class Session {
   });
 
   String getSpeakersNames() {
-    String names = "~ ";
+    String names = "";
     for (int i = 0; i < speakers.length; i++) {
       names += speakers[i].name;
       if (i < speakers.length - 1) {

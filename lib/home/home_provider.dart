@@ -6,7 +6,6 @@ import 'package:flutter_devfest/utils/dependency_injection.dart';
 import 'package:flutter_devfest/utils/Config.dart';
 
 abstract class IHomeProvider {
-  Future<TeamsData> getTeams();
 }
 
 class HomeProvider implements IHomeProvider {
@@ -24,14 +23,5 @@ class HomeProvider implements IHomeProvider {
     _client = Injector().currentClient;
   }
 
-  @override
-  Future<TeamsData> getTeams() async {
-    var result = await _client.getAsync(kConstGetTeamsUrl);
-    if (result.networkServiceResponse.success) {
-      TeamsData res = TeamsData.fromJson(result.mappedResult);
-      return res;
-    }
 
-    throw Exception(result.networkServiceResponse.message);
-  }
 }

@@ -19,17 +19,6 @@ class MockClient implements IClient {
     var resultClass;
     String rawString;
 
-
-    //? For Teams Hardcoded Data
-     if (resourcePath == HomeProvider.kConstGetTeamsUrl) {
-      if (Injector().currentDataMode == DataMode.DART) {
-        rawString = jsonEncode(TeamsData(teams: teams));
-      } else {
-        rawString = await rootBundle.loadString(Config.teamsAssetJson);
-      }
-      resultClass = await compute(jsonParserIsolate, rawString);
-    }
-
     return MappedNetworkServiceResponse<T>(
         mappedResult: resultClass,
         networkServiceResponse: NetworkServiceResponse<T>(success: true));

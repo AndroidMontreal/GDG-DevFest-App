@@ -1,49 +1,96 @@
 import 'dart:math';
 
+import 'package:async/async.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_devfest/Localization/AppLocalizations.dart';
-import 'package:flutter_devfest/home/index.dart';
+import 'package:flutter_devfest/home/team.dart';
 import 'package:flutter_devfest/universal/dev_scaffold.dart';
 import 'package:flutter_devfest/utils/tools.dart';
 import 'package:flutter_devfest/utils/widgets/SocialActionsWidget.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class TeamPage extends StatelessWidget {
   static const String routeName = "/team";
 
+  Stream<List<QuerySnapshot>> getData() {
+    Stream streamMemberTeam1 =  Firestore.instance.collection("team").document("0").collection("members").snapshots();
+    Stream documents =  Firestore.instance.collection("team").snapshots();
+    Stream streamMemberTeam2 =  Firestore.instance.collection("team").document("1").collection("members").snapshots();
+    return StreamZip([streamMemberTeam1, streamMemberTeam2, documents]);
+  }
+
+  List getTeamsList(BuildContext context, List<QuerySnapshot> querySnapshotData) {
+    List<DocumentSnapshot> documents = querySnapshotData[2].documents;
+    List<DocumentSnapshot> team1 = querySnapshotData[0].documents;
+    List<DocumentSnapshot> team2 = querySnapshotData[1].documents;
+    var lang = AppLocalizations.of(context).getLanguagesCode();
+
+    List list = new List();
+
+    for (var i =0; i < documents.length; i++)  {
+      list.add(documents[i]["title"][lang]);
+       if (i == 0) {
+         for(var team1Data in team1) {
+           Team team = Team.fromDocumentSnapshot(team1Data, lang);
+           list.add(team);
+         }
+       } else {
+         for(var team2Data in team2) {
+           Team team = Team.fromDocumentSnapshot(team2Data, lang);
+           list.add(team);
+         }
+       }
+    }
+    return list;
+  }
+
   @override
   Widget build(BuildContext context) {
-    var _homeBloc = HomeBloc();
-    var state = _homeBloc.currentState as InHomeState;
     return DevScaffold(
       body: StreamBuilder(
-          stream: Firestore.instance
-              .collection("team")
-              .document("0")
-              .collection("members")
-              .snapshots(),
+          stream: getData(),
           builder: (context, snapshots) {
-            if (!snapshots.hasData) return Padding(
-                padding: const EdgeInsets.all(40.0),
-                child:  Text(AppLocalizations.of(context).translate("loading")));
+            if (!snapshots.hasData)
+              return Padding(
+                  padding: const EdgeInsets.all(40.0),
+                  child:
+                      Text(AppLocalizations.of(context).translate("loading")));
+
+            List teamsList = getTeamsList(context,  snapshots.data.toList());
             return ListView.builder(
               shrinkWrap: true,
               itemBuilder: (c, i) {
-                return buildCardItem(c, snapshots.data.documents[i]);
+                if (teamsList[i] is Team) {
+                  return buildCardItem(c, teamsList[i]);
+                } else {
+                  return buildTitle(c, teamsList[i]);
+                }
               },
-              itemCount: snapshots.data.documents.length,
+              itemCount: teamsList.length,
             );
           }),
       title: AppLocalizations.of(context).translate("team"),
     );
   }
 
-  Widget buildCardItem(BuildContext context, DocumentSnapshot memberDocument) {
-    var language = AppLocalizations.of(context).getLanguagesCode();
+  Widget buildTitle(BuildContext context, String title) {
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Text(
+            title,
+            style: Theme.of(context).textTheme.title,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildCardItem(BuildContext context, Team team) {
     return Card(
       elevation: 0.0,
       child: Padding(
@@ -58,7 +105,7 @@ class TeamPage extends StatelessWidget {
                 ),
                 child: CachedNetworkImage(
                   fit: BoxFit.cover,
-                  imageUrl: memberDocument["photoUrl"],
+                  imageUrl: team.photoUrl,
                 ),
               ),
               SizedBox(
@@ -75,7 +122,7 @@ class TeamPage extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         Text(
-                          memberDocument["name"].toString(),
+                          team.name,
                           style: Theme.of(context).textTheme.title,
                         ),
                         SizedBox(
@@ -93,17 +140,10 @@ class TeamPage extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      memberDocument["title"][language].toString(),
+                      team.title,
                       style: Theme.of(context).textTheme.subtitle,
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      memberDocument["title"][language].toString(),
-                      style: Theme.of(context).textTheme.caption,
-                    ),
-                    SocialActions(memberDocument["socials"]),
+                    SocialActions(team.socials),
                   ],
                 ),
               )

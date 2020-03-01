@@ -9,16 +9,14 @@ abstract class HomeEvent {
 }
 
 class LoadHomeEvent extends HomeEvent {
-  final IHomeProvider _homeProvider = HomeProvider();
   @override
   String toString() => 'LoadHomeEvent';
 
   @override
   Future<HomeState> applyAsync({HomeState currentState, HomeBloc bloc}) async {
     try {
-      var teamsData = await _homeProvider.getTeams();
       return InHomeState(
-        teamsData: teamsData,
+        teamsData: null,
       );
     } catch (_, stackTrace) {
       print('$_ $stackTrace');

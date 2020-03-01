@@ -54,6 +54,13 @@ class SessionList extends StatelessWidget {
           text: TextSpan(
             text: "${session.sessionTitle}\n",
             style: Theme.of(context).textTheme.title.copyWith(fontSize: 16),
+            children: [
+              TextSpan(
+                text: session.track,
+                style:
+                Theme.of(context).textTheme.subtitle.copyWith(fontSize: 14),
+              ),
+            ],
           ),
         ),
       ),

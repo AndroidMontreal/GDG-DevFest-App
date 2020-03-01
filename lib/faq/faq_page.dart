@@ -6,7 +6,6 @@ class FaqPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var _homeBloc = HomeBloc();
     return DevScaffold(
       body: Container(
         child: Center(
