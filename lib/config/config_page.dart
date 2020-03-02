@@ -4,7 +4,6 @@ import 'package:flutter_devfest/Localization/AppLocalizations.dart';
 import 'package:flutter_devfest/agenda/agenda_page.dart';
 import 'package:flutter_devfest/config/index.dart';
 import 'package:flutter_devfest/faq/faq_page.dart';
-import 'package:flutter_devfest/find_devfest/find_devfest_page.dart';
 import 'package:flutter_devfest/home/home_page.dart';
 import 'package:flutter_devfest/map/map_page.dart';
 import 'package:flutter_devfest/speakers/speaker_page.dart';
@@ -80,7 +79,6 @@ class _ConfigPageState extends State<ConfigPage> {
               SponsorPage.routeName: (context) => SponsorPage(),
               TeamPage.routeName: (context) => TeamPage(),
               FaqPage.routeName: (context) => FaqPage(),
-              FindDevFestPage.routeName: (context) => FindDevFestPage(),
               MapPage.routeName: (context) => MapPage(),
             },
           );

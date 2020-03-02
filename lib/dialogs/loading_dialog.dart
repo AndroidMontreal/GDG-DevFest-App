@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_devfest/Localization/AppLocalizations.dart';
-import 'package:flutter_devfest/utils/Config.dart';
 
 class LoadingDialog extends StatelessWidget {
   final Widget child;

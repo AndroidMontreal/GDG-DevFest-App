@@ -4,6 +4,16 @@
   "emailSubject": "Infomation Women Techmakers Montréal",
   "error": "Une erreur est survenue",
   "faq": "FAQ",
+  "faqMenQuestion": "Les hommes et les autres genres sont-ils autorisés à participer à l'événement?",
+  "faqMenAnswer": "Oui! Nous les encourageons à venir. Notre événement est inclusif et ouvert à tous les genres.",
+  "faqAgeQuestion": "Existe-t-il des critères d'identification ou une limite d'âge minimum pour participer à l'événement?",
+  "faqAgeAnswer": "Tous les participants doivent être agés de 18 ans ou plus.",
+  "faqTransportQuestion": "Quelles sont mes options de transport / stationnement pour me rendre à l'événement et en revenir?",
+  "faqTransportAnswer": "e lieu est proche de la station de métro Bonaventure. Il y a un stationnement intérieur disponible sur le site pour 16 $ / jour et il y a des parcomètres autour de l’emplacement.",
+  "faqQuestion": "Si j'ai des questions, comment puis-je contacter les organisatrices?",
+  "faqAnswer": "Vous pouvez nous contacter à info@wtmmontreal.com.",
+  "faqRefundQuestion": "Quelle est la politique de remboursement?",
+  "faqRefundAnswer": "Nous pouvons vous rembourser votre billet jusqu'au 13 mars 2020, mais vous perdrez les frais payés à Eventbrite. Le billet peut également être transféré à quelqu'un d'autre en contactant info@wtmmontreal.com.",
   "homeDescription": "Women Techmakers est un programme créé par Google afin de souligner le talent des femmes dans le milieu de l’informatique. \n Ce programme se déroule chaque année dans 52 pays et connaît plus de 200 événements mondiaux.",
   "homeTitle": "Accueil",
   "locateUs": "Nous situer",
@@ -18,5 +28,5 @@
   "team": "Équipe",
   "title": "Women Techmakers Montréal",
   "tryAgain" : "Réessayer",
-  "welcome": "Bienvenue à Women Techmakers Montréal",
+  "welcome": "Bienvenue à Women Techmakers Montréal"
 }

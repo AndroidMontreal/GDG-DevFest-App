@@ -48,7 +48,7 @@ class HomeFront extends StatelessWidget {
             RaisedButton(
               child: Text(AppLocalizations.of(context).translate("schedule")),
               shape: StadiumBorder(),
-              color: Colors.red,
+              color: Tools.wtmBlueColor,
               colorBrightness: Brightness.dark,
               onPressed: () =>
                   Navigator.pushNamed(context, AgendaPage.routeName),
@@ -56,7 +56,7 @@ class HomeFront extends StatelessWidget {
             RaisedButton(
               child: Text(AppLocalizations.of(context).translate("speakers")),
               shape: StadiumBorder(),
-              color: Colors.green,
+              color: Tools.wtmGreen,
               colorBrightness: Brightness.dark,
               onPressed: () =>
                   Navigator.pushNamed(context, SpeakerPage.routeName),
@@ -64,7 +64,7 @@ class HomeFront extends StatelessWidget {
             RaisedButton(
               child: Text(AppLocalizations.of(context).translate("sponsors")),
               shape: StadiumBorder(),
-              color: Colors.orange,
+              color: Tools.wtmBlueLight,
               colorBrightness: Brightness.dark,
               onPressed: () =>
                   Navigator.pushNamed(context, SponsorPage.routeName),
@@ -72,21 +72,21 @@ class HomeFront extends StatelessWidget {
             RaisedButton(
               child: Text(AppLocalizations.of(context).translate("team")),
               shape: StadiumBorder(),
-              color: Colors.purple,
+              color:Tools.wtmGreenLight,
               colorBrightness: Brightness.dark,
               onPressed: () => Navigator.pushNamed(context, TeamPage.routeName),
             ),
             RaisedButton(
               child: Text(AppLocalizations.of(context).translate("faq")),
               shape: StadiumBorder(),
-              color: Colors.brown,
+              color: Tools.wtmBlueColor,
               colorBrightness: Brightness.dark,
               onPressed: () => Navigator.pushNamed(context, FaqPage.routeName),
             ),
             RaisedButton(
               child: Text(AppLocalizations.of(context).translate("locateUs")),
               shape: StadiumBorder(),
-              color: Colors.blue,
+              color: Tools.wtmGreen,
               colorBrightness: Brightness.dark,
               onPressed: () => Navigator.pushNamed(context, MapPage.routeName),
             ),
@@ -100,39 +100,39 @@ class HomeFront extends StatelessWidget {
         children: <Widget>[
           ActionCard(
             icon: Icons.schedule,
-            color: Colors.red,
+            color: Tools.wtmBlueColor,
             title: AppLocalizations.of(context).translate("schedule"),
             onPressed: () => Navigator.pushNamed(context, AgendaPage.routeName),
           ),
           ActionCard(
             icon: Icons.person,
-            color: Colors.green,
+            color: Tools.wtmGreen,
             title: AppLocalizations.of(context).translate("speakers"),
             onPressed: () =>
                 Navigator.pushNamed(context, SpeakerPage.routeName),
           ),
           ActionCard(
             icon: Icons.people,
-            color: Colors.amber,
+            color:Tools.wtmBlueLight,
             title: AppLocalizations.of(context).translate("team"),
             onPressed: () => Navigator.pushNamed(context, TeamPage.routeName),
           ),
           ActionCard(
             icon: FontAwesomeIcons.solidHandshake,
-            color: Colors.purple,
+            color:Tools.wtmGreenLight,
             title: AppLocalizations.of(context).translate("sponsors"),
             onPressed: () =>
                 Navigator.pushNamed(context, SponsorPage.routeName),
           ),
           ActionCard(
             icon: Icons.question_answer,
-            color: Colors.brown,
+            color:Tools.wtmBlueColor,
             title: AppLocalizations.of(context).translate("faq"),
             onPressed: () => Navigator.pushNamed(context, FaqPage.routeName),
           ),
           ActionCard(
             icon: Icons.map,
-            color: Colors.blue,
+            color:Tools.wtmGreen,
             title: AppLocalizations.of(context).translate("locateUs"),
             onPressed: () => Navigator.pushNamed(context, MapPage.routeName),
           )

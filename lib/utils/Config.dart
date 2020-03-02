@@ -11,14 +11,9 @@ class Config {
   static const String google_sans_family = "GoogleSans";
   static bool isDebugMode = false;
 
-  // * Url related
-  static String baseUrl = "https://storage.googleapis.com/gdg-devfest";
-
   static checkDebug() {
     assert(() {
-      // baseUrl = "http://127.0.0.1:8000/gdg-devfest/";
       // * Change with your local url if any
-      baseUrl = "https://storage.googleapis.com/gdg-devfest";
       isDebugMode = true;
       return true;
     }());
@@ -47,10 +42,6 @@ class Config {
   static const String isAdminPref = "isAdminPref";
   static const String darkModePref = "darkModePref";
 
-  //* JSON URLS
-  static const String speakersAssetJson = "assets/json/speakers.json";
-  static const String sessionsAssetJson = "assets/json/sessions.json";
-  static const String teamsAssetJson = "assets/json/teams.json";
 
   //* Media
   static const String facebookUrl = "https://www.facebook.com/wtm.montreal";
