@@ -158,9 +158,12 @@ class AgendaPage extends StatelessWidget {
         stream: getData(),
         builder: (context, AsyncSnapshot<List<QuerySnapshot>> snapshots) {
           if (!snapshots.hasData)
-            return Padding(
-                padding: const EdgeInsets.all(40.0),
-                child: Text(AppLocalizations.of(context).translate("loading")));
+            return DevScaffold (
+                title: AppLocalizations.of(context).translate("schedule"),
+                body: Padding(
+                  padding: const EdgeInsets.all(40.0),
+                  child:
+                  Text(AppLocalizations.of(context).translate("loading"))));
           List<QuerySnapshot> querySnapshotData = snapshots.data.toList();
 
           DocumentSnapshot schedule = querySnapshotData[0].documents[0];

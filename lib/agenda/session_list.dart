@@ -58,7 +58,7 @@ class SessionList extends StatelessWidget {
               TextSpan(
                 text: session.track,
                 style:
-                Theme.of(context).textTheme.subtitle.copyWith(fontSize: 14),
+                    Theme.of(context).textTheme.subtitle.copyWith(fontSize: 14),
               ),
             ],
           ),
@@ -101,10 +101,12 @@ class SessionList extends StatelessWidget {
             ],
           ),
         ),
-        leading:  Hero(
+        leading: Container(
+          child: Hero(
             tag: session.sessionId,
             child: getSpeakersAvatar(context, session.speakers),
           ),
+        ),
         title: RichText(
           text: TextSpan(
             text: "${session.sessionTitle}\n",
@@ -130,9 +132,7 @@ class SessionList extends StatelessWidget {
   }
 
   Widget getSpeakersAvatar(BuildContext context, List<Speaker> speakers) {
-    return FittedBox(
-      fit: BoxFit.fitHeight,
-      child: Row(
+    return Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
@@ -142,7 +142,6 @@ class SessionList extends StatelessWidget {
               backgroundImage: CachedNetworkImageProvider(speaker.image),
             )
         ],
-      ),
     );
   }
 }

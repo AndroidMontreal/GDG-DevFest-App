@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_devfest/Localization/AppLocalizations.dart';
 import 'package:flutter_devfest/config/config_bloc.dart';
 import 'package:flutter_devfest/config/config_event.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -40,7 +43,10 @@ class DevScaffold extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () => Share.share(
-                    "Download the new DevFest App and share with your tech friends.\nPlayStore -  http://bit.ly/2GDr18N"),
+                Platform.isIOS? 
+                  AppLocalizations.of(context).translate("downloadApp_applestore"):
+                  AppLocalizations.of(context).translate("downloadApp_playstore"),
+                 ),
                 icon: Icon(
                   Icons.share,
                   size: 20,

@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class Config {
   static const String app_name = "Women Techmakers Montreal";
-  static const String app_version = "Version 1.0.4";
+  static const String app_version = "Version 4.0.0";
   static const int app_version_code = 1;
   static const String app_color = "#ffd7167";
   static Color primaryAppColor = Colors.white;
@@ -28,8 +28,8 @@ class Config {
 
   //* Images
   static const String home_img = "assets/images/home_img.jpeg";
-  static const String banner_light = "assets/images/banner_light.jpg";
-  static const String banner_dark = "assets/images/banner_dark.png";
+  static const String banner_light = "assets/images/banner_light.png";
+  static const String banner_dark = "assets/images/banner_light.png";
 
 
   //* Preferences

@@ -14,8 +14,9 @@ import 'package:url_launcher/url_launcher.dart';
 
 class HomeFront extends StatelessWidget {
   List<Widget> devFestTexts(context) => [
-        Padding(padding: EdgeInsets.all(16),
-          child:  Text(
+        Padding(
+          padding: EdgeInsets.all(16),
+          child: Text(
             AppLocalizations.of(context).translate("title"),
             style: Theme.of(context).textTheme.headline,
             textAlign: TextAlign.center,
@@ -24,7 +25,8 @@ class HomeFront extends StatelessWidget {
         SizedBox(
           height: 10,
         ),
-        Padding(padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+        Padding(
+          padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
           child: Text(
             AppLocalizations.of(context).translate("homeDescription"),
             style: Theme.of(context).textTheme.caption,
@@ -41,56 +43,55 @@ class HomeFront extends StatelessWidget {
     }
   }
 
-  Widget actions(context) =>  Wrap(
-          alignment: WrapAlignment.center,
-          spacing: 10.0,
-          children: <Widget>[
-            RaisedButton(
-              child: Text(AppLocalizations.of(context).translate("schedule")),
-              shape: StadiumBorder(),
-              color: Tools.wtmBlueColor,
-              colorBrightness: Brightness.dark,
-              onPressed: () =>
-                  Navigator.pushNamed(context, AgendaPage.routeName),
-            ),
-            RaisedButton(
-              child: Text(AppLocalizations.of(context).translate("speakers")),
-              shape: StadiumBorder(),
-              color: Tools.wtmGreen,
-              colorBrightness: Brightness.dark,
-              onPressed: () =>
-                  Navigator.pushNamed(context, SpeakerPage.routeName),
-            ),
-            RaisedButton(
-              child: Text(AppLocalizations.of(context).translate("sponsors")),
-              shape: StadiumBorder(),
-              color: Tools.wtmBlueLight,
-              colorBrightness: Brightness.dark,
-              onPressed: () =>
-                  Navigator.pushNamed(context, SponsorPage.routeName),
-            ),
-            RaisedButton(
-              child: Text(AppLocalizations.of(context).translate("team")),
-              shape: StadiumBorder(),
-              color:Tools.wtmGreenLight,
-              colorBrightness: Brightness.dark,
-              onPressed: () => Navigator.pushNamed(context, TeamPage.routeName),
-            ),
-            RaisedButton(
-              child: Text(AppLocalizations.of(context).translate("faq")),
-              shape: StadiumBorder(),
-              color: Tools.wtmBlueColor,
-              colorBrightness: Brightness.dark,
-              onPressed: () => Navigator.pushNamed(context, FaqPage.routeName),
-            ),
-            RaisedButton(
-              child: Text(AppLocalizations.of(context).translate("locateUs")),
-              shape: StadiumBorder(),
-              color: Tools.wtmGreen,
-              colorBrightness: Brightness.dark,
-              onPressed: () => Navigator.pushNamed(context, MapPage.routeName),
-            ),
-          ],
+  Widget actions(context) => Wrap(
+        alignment: WrapAlignment.center,
+        spacing: 10.0,
+        children: <Widget>[
+          RaisedButton(
+            child: Text(AppLocalizations.of(context).translate("schedule")),
+            shape: StadiumBorder(),
+            color: Tools.wtmBlueColor,
+            colorBrightness: Brightness.dark,
+            onPressed: () => Navigator.pushNamed(context, AgendaPage.routeName),
+          ),
+          RaisedButton(
+            child: Text(AppLocalizations.of(context).translate("speakers")),
+            shape: StadiumBorder(),
+            color: Tools.wtmGreen,
+            colorBrightness: Brightness.dark,
+            onPressed: () =>
+                Navigator.pushNamed(context, SpeakerPage.routeName),
+          ),
+          RaisedButton(
+            child: Text(AppLocalizations.of(context).translate("sponsors")),
+            shape: StadiumBorder(),
+            color: Tools.wtmBlueLight,
+            colorBrightness: Brightness.dark,
+            onPressed: () =>
+                Navigator.pushNamed(context, SponsorPage.routeName),
+          ),
+          RaisedButton(
+            child: Text(AppLocalizations.of(context).translate("team")),
+            shape: StadiumBorder(),
+            color: Tools.wtmGreenLight,
+            colorBrightness: Brightness.dark,
+            onPressed: () => Navigator.pushNamed(context, TeamPage.routeName),
+          ),
+          RaisedButton(
+            child: Text(AppLocalizations.of(context).translate("faq")),
+            shape: StadiumBorder(),
+            color: Tools.wtmBlueColor,
+            colorBrightness: Brightness.dark,
+            onPressed: () => Navigator.pushNamed(context, FaqPage.routeName),
+          ),
+          RaisedButton(
+            child: Text(AppLocalizations.of(context).translate("locateUs")),
+            shape: StadiumBorder(),
+            color: Tools.wtmGreen,
+            colorBrightness: Brightness.dark,
+            onPressed: () => Navigator.pushNamed(context, MapPage.routeName),
+          ),
+        ],
       );
 
   Widget newActions(context) => Wrap(
@@ -113,26 +114,26 @@ class HomeFront extends StatelessWidget {
           ),
           ActionCard(
             icon: Icons.people,
-            color:Tools.wtmBlueLight,
+            color: Tools.wtmBlueLight,
             title: AppLocalizations.of(context).translate("team"),
             onPressed: () => Navigator.pushNamed(context, TeamPage.routeName),
           ),
           ActionCard(
             icon: FontAwesomeIcons.solidHandshake,
-            color:Tools.wtmGreenLight,
+            color: Tools.wtmGreenLight,
             title: AppLocalizations.of(context).translate("sponsors"),
             onPressed: () =>
                 Navigator.pushNamed(context, SponsorPage.routeName),
           ),
           ActionCard(
             icon: Icons.question_answer,
-            color:Tools.wtmBlueColor,
+            color: Tools.wtmBlueColor,
             title: AppLocalizations.of(context).translate("faq"),
             onPressed: () => Navigator.pushNamed(context, FaqPage.routeName),
           ),
           ActionCard(
             icon: Icons.map,
-            color:Tools.wtmGreen,
+            color: Tools.wtmGreen,
             title: AppLocalizations.of(context).translate("locateUs"),
             onPressed: () => Navigator.pushNamed(context, MapPage.routeName),
           )
@@ -198,10 +199,11 @@ class HomeFront extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Image(
-            image: AssetImage(ConfigBloc().darkModeOn
-                ? Config.banner_dark
-                : Config.banner_light),
-          ),
+              image: AssetImage(ConfigBloc().darkModeOn
+                  ? Config.banner_dark
+                  : Config.banner_light),
+            ),
+        
           SizedBox(
             height: 20,
           ),
@@ -209,7 +211,8 @@ class HomeFront extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          Padding(padding: EdgeInsets.all(16),
+          Padding(
+            padding: EdgeInsets.all(16),
             child: newActions(context),
           ),
           SizedBox(
@@ -243,42 +246,42 @@ class ActionCard extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(8),
       onTap: onPressed,
-      child: Ink(
-        height: MediaQuery.of(context).size.height * 0.1,
-        width: MediaQuery.of(context).size.width * 0.2,
-        decoration: BoxDecoration(
-          color: ConfigBloc().darkModeOn
-              ? Tools.hexToColor("#1f2124")
-              : Colors.white,
-          borderRadius: BorderRadius.circular(8),
-          boxShadow: !ConfigBloc().darkModeOn
-              ? [
-                  BoxShadow(
-                    color: Colors.grey[200],
-                    blurRadius: 10,
-                    spreadRadius: 5,
-                  )
-                ]
-              : null,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Icon(
-              icon,
-              color: color,
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              title,
-              style: Theme.of(context).textTheme.title.copyWith(
-                    fontSize: 12,
-                  ),
-            ),
-          ],
-        ),
+        child: Ink(
+          height: MediaQuery.of(context).size.height * 0.1,
+          width: MediaQuery.of(context).size.width * 0.2,
+          decoration: BoxDecoration(
+            color: ConfigBloc().darkModeOn
+                ? Tools.hexToColor("#1f2124")
+                : Colors.white,
+            borderRadius: BorderRadius.circular(8),
+            boxShadow: !ConfigBloc().darkModeOn
+                ? [
+                    BoxShadow(
+                      color: Colors.grey[200],
+                      blurRadius: 10,
+                      spreadRadius: 5,
+                    )
+                  ]
+                : null,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Icon(
+                icon,
+                color: color,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                title,
+                style: Theme.of(context).textTheme.title.copyWith(
+                      fontSize: 10,
+                    ),
+              ),
+            ],
+          ),
       ),
     );
   }
